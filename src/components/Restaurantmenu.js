@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import mockData from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import RestaurantCategory from "./RestaurantCategory";
 const Restaurantmenu = () => {
   const { id } = useParams();
 
   const [restaurant, setRestaurant] = useState(null);
+  const [showIndex, setShowIndex] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,22 +26,23 @@ const Restaurantmenu = () => {
   }
 
   return (
-    <div className="p-4 m-2 border border-solid border-black rounded-md shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
-      <h1 className="text-3xl font-bold">{restaurant.name}</h1>
+    <div className=" bg-gray-50 min-h-screen p-4 ">
+      <div className="flex items-center justify-center gap-3">
+        <h1 className="text-3xl font-bold">{restaurant.name}</h1>
+        <span className="bg-green-600 text-white px-2 py-1 rounded-md shadow-lg">
+          ⭐ {restaurant.rating}
+        </span>
 
-      <h2 className="my-2">⭐ {restaurant.rating}</h2>
+        <span className="text-gray-600">{restaurant.cuisines.join(", ")}</span>
+      </div>
 
-      {restaurant.menu.map((category) => (
-        <div key={category.category} className="my-4">
-          <h2 className="font-bold text-xl">{category.category}</h2>
-
-          {category.items.map((item) => (
-            <div key={item.id} className="flex justify-between border-b p-2">
-              <span>{item.name}</span>
-              <span>₹{item.price}</span>
-            </div>
-          ))}
-        </div>
+      {restaurant.menu.map((category, index) => (
+        <RestaurantCategory
+          key={category.category}
+          data={category}
+          showItems={index === showIndex}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+        />
       ))}
     </div>
   );

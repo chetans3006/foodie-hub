@@ -1,10 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import mockData from "../utils/mockData";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
 const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
 const Body = () => {
@@ -13,7 +13,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const onlineStatus = useOnlineStatus();
-
+  const { loggedInUser, setUserName } = useContext(UserContext);
   const handleSearch = () => {
     const filtered = allRestaurants.filter((res) =>
       res.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -78,6 +78,15 @@ const Body = () => {
         >
           Reset
         </button>
+        <div>
+          <label className="my-2 font-bold">UserName:</label>{" "}
+          <input
+            type="text"
+            className="my-2 border border-solid border-black rounded-md px-2 py-1"
+            value={loggedInUser ?? ""}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap justify-center">
