@@ -1,31 +1,34 @@
 const Contact = () => {
   return (
-    <div className="m-2 p-2 ">
-      <h1 className="text-2xl font-bold my-2 text-center ">Contact Us</h1>
-      <div className="flex flex-col items-center justify-center m-0 p-0">
-        <p className=" text-sm my-2 p-2">
+    <div className="max-w-2xl mx-auto">
+      <div className="bg-white rounded-3xl shadow-md p-6 sm:p-10">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-900">
+          Contact Us
+        </h1>
+        <p className="text-sm text-gray-600 text-center mt-2">
           If you have any questions, feedback, or inquiries, please feel free to
-          reach out to us. We value your input and are here to assist you in any
-          way we can. You can contact us through the following channels:
+          reach out to us. We value your input and are here to assist you.
         </p>
-        <form>
+
+        <form className="mt-8 space-y-4">
           <input
             type="text"
             placeholder="Name"
-            className="border border-gray-300 rounded-md p-2 m-2 w-full"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FC8019] focus:ring-2 focus:ring-[#FC8019]/20 transition"
           />
           <input
             type="email"
             placeholder="Email"
-            className="border border-gray-300 rounded-md p-2 m-2 w-full"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FC8019] focus:ring-2 focus:ring-[#FC8019]/20 transition"
           />
           <textarea
             placeholder="Message"
-            className="border border-gray-300 rounded-md p-2 m-2 w-full"
-          ></textarea>
+            rows={5}
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#FC8019] focus:ring-2 focus:ring-[#FC8019]/20 transition"
+          />
           <button
             type="submit"
-            className="bg-blue-500 text-white rounded-md p-2 m-2 hover:bg-blue-600 "
+            className="w-full py-3 rounded-xl bg-[#FC8019] hover:bg-[#F97316] text-white font-bold shadow-md hover:shadow-lg transition-all duration-300"
           >
             Submit
           </button>
@@ -34,4 +37,5 @@ const Contact = () => {
     </div>
   );
 };
+
 export default Contact;

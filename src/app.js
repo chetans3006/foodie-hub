@@ -19,20 +19,19 @@ import Cart from "./components/Cart";
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
   const [userName, setUserName] = useState();
-  //Authentication
   useEffect(() => {
-    const data = {
-      name: "Chetan Sharma",
-    };
+    const data = { name: "Chetan Sharma" };
     setUserName(data.name);
   }, []);
 
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-        <div className="app">
+        <div className="app min-h-screen bg-[#F8F8F8] text-gray-900 antialiased">
           <Header />
-          <Outlet />
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16">
+            <Outlet />
+          </main>
         </div>
       </UserContext.Provider>
     </Provider>
@@ -45,18 +44,9 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     children: [
-      {
-        path: "/",
-        element: <Body />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
+      { path: "/", element: <Body /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
       {
         path: "/grocery",
         element: (
@@ -65,18 +55,11 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "/restaurants/:id",
-        element: <Restaurantmenu />,
-      },
+      { path: "/cart", element: <Cart /> },
+      { path: "/restaurants/:id", element: <Restaurantmenu /> },
     ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 root.render(<RouterProvider router={appRouter} />);

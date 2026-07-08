@@ -1,14 +1,17 @@
 const Grocery = () => {
   return (
-    <div className="m-2 p-2 border border-solid border-black rounded-md shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
-      <h1 className="text-2xl font-bold my-2 text-center ">Grocery Page</h1>
-      <h2 className="text-xl font-semibold my-2">
+    <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-md p-6 sm:p-10 hover:shadow-xl transition-all duration-300">
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-900">
+        Grocery
+      </h1>
+      <h2 className="text-lg font-semibold text-gray-800 mt-4">
         Welcome to the Grocery Page!
       </h2>
-      <h2 className="text-lg font-normal my-2">
+      <p className="text-sm text-gray-600 mt-2">
         Here you can find a variety of grocery items to suit your needs.
-      </h2>
+      </p>
     </div>
   );
 };
+
 export default Grocery;
